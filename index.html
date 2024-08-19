@@ -18,7 +18,7 @@
             align-items: center;
             height: 100vh;
             color: #333;
-            padding: 20px; /* Adiciona espaçamento ao redor do conteúdo */
+            padding: 20px;
         }
         .container {
             text-align: center;
@@ -28,7 +28,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
-            word-break: break-word; /* Quebra a palavra quando o texto excede o contêiner */
+            word-break: break-word;
         }
         button {
             width: 100%;
@@ -56,6 +56,28 @@
             font-weight: bold;
             color: #0071e3;
         }
+        /* Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            color: #0071e3;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +85,24 @@
         <button>Logar com Metamask</button>
         <h3>Você está logado como: <span id="account"></span></h3>
     </div>
+
+    <!-- Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <p>Bem Vindo</p>
+        </div>
+    </div>
+
     <script>
+        function showModal() {
+            const modal = document.getElementById('welcomeModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                window.location.href = 'acessonivel1.html'; // Redirect after 3 seconds
+            }, 3000);
+        }
+
         async function checkAccount() {
             if (window.ethereum) {
                 try {
@@ -86,6 +125,7 @@
                 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                 if (accounts.length > 0) {
                     document.getElementById('account').textContent = accounts[0];
+                    showModal();
                 }
             } catch (e) {
                 console.error(e);
@@ -106,4 +146,3 @@
     </script>
 </body>
 </html>
-
