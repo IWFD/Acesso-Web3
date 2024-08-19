@@ -77,6 +77,7 @@
             }
         }
 
+        // Atualiza a conta após o login
         document.querySelector('button').addEventListener('click', async () => {
             try {
                 await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -85,6 +86,17 @@
                 console.error(e);
             }
         });
+
+        // Detecta mudanças na conta e atualiza automaticamente
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', function (accounts) {
+                if (accounts.length > 0) {
+                    document.querySelector('span').textContent = accounts[0];
+                } else {
+                    document.querySelector('span').textContent = 'Nenhuma conta conectada';
+                }
+            });
+        }
 
         // Verificar a conta ao carregar a página
         checkAccount();
