@@ -60,25 +60,34 @@
         <h3>Você está logado como: <span></span></h3>
     </div>
     <script>
-        if (window.ethereum) {
-            document.querySelector('button').addEventListener('click', async () => {
+        async function checkAccount() {
+            if (window.ethereum) {
                 try {
                     const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-
-                    if (accounts.length === 0) {
-                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    if (accounts.length > 0) {
+                        document.querySelector('span').textContent = accounts[0];
+                    } else {
+                        document.querySelector('span').textContent = 'Nenhuma conta conectada';
                     }
-
-                    const updatedAccounts = await window.ethereum.request({ method: 'eth_accounts' });
-                    let account = updatedAccounts[0];
-                    document.querySelector('span').innerHTML = account;
                 } catch (e) {
                     console.error(e);
                 }
-            });
-        } else {
-            alert("Metamask não está instalada. Não é possível interagir com nosso website.");
+            } else {
+                alert("Metamask não está instalada. Não é possível interagir com nosso website.");
+            }
         }
+
+        document.querySelector('button').addEventListener('click', async () => {
+            try {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                await checkAccount(); // Atualiza o endereço após o login
+            } catch (e) {
+                console.error(e);
+            }
+        });
+
+        // Verificar a conta ao carregar a página
+        checkAccount();
     </script>
 </body>
 </html>
