@@ -1,0 +1,173 @@
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+}
+
+:root {
+    --cor-primaria: #000;
+    --cor-secundaria: #f6f6f6;
+    --cor-terciaria: #DBF300;
+    --cor-complementar: #090909;
+    --cor-hover: #2B2B2B;
+
+
+}
+
+.logo {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+}
+
+.menu-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.home {
+    color: var(--cor-secundaria);
+    text-decoration: none;
+}
+
+.home:hover {
+    font-weight: 700;
+    transition: 0.3s;
+    color: var(--cor-terciaria);
+}
+
+.sobre {
+    color: #f6f6f6;
+    text-decoration: none;
+}
+
+.sobre:hover {
+    font-weight: 700;
+    transition: 0.3s;
+    color: var(--cor-terciaria);
+}
+
+body {
+    /* background-image: url(/Assets/Foto-uxbrabo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; */
+    /* height: 100vh; */
+    box-sizing: border-box;
+    background-color: var(--cor-primaria);
+    color: #f6f6f6;
+}
+
+.cabecalho {
+    text-decoration: none;
+    margin: 2% 15%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.apresentacao {
+    margin: 5% 15%;
+    display: flex;
+    gap: 82px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.apresentacao__conteudo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.apresentacao__conteudo__titulo__sobre {
+    font-size: 2.25rem;
+    color: var(--cor-terciaria);
+}
+
+.apresentacao__conteudo__titulo {
+    font-size: 2.25rem;
+}
+
+.apresentacao__conteudo__paragrafo {
+    font-size: 1.5rem;
+}
+
+.apresentacao__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.apresentacao__links__subtitulo {
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.icone-svg {
+    width: 24px;
+}
+
+.imagem {
+    width: 50%;
+}
+
+.apresentacao__links_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border: 2px solid var(--cor-terciaria);
+    width: 50%;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    color: #f6f6f6;
+}
+
+.apresentacao__links_link:hover {
+    transition: 0.3s;
+    background: var(--cor-hover)
+}
+
+strong {
+    color: var(--cor-terciaria);
+    font-weight: 700;
+}
+
+.negrito-paragrafo {
+    font-weight: 700;
+    color: var(--cor-terciaria);
+}
+
+.rodape {
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+    background: var(--cor-complementar);
+}
+
+@media (max-width: 1200px) {
+    .apresentacao {
+        flex-direction: column-reverse;
+        margin: auto;
+        padding: 5%;
+    }
+
+    .cabecalho {
+        align-items: center;
+    }
+
+    .menu-nav {
+        justify-content: center;
+    }
+
+    .apresentacao__conteudo {
+        width: auto;
+    }
+}
