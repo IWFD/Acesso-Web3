@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Projeto Web3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        div {
+            text-align: center;
+        }
+        button {
+            width: 220px;
+            height: 40px;
+            background-color: #444;
+            border: 0;
+            cursor: pointer;
+            color: white;
+        }
+        h3 {
+            margin-top: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>Logar!!</button>
+        <h3>Você está logado como: <span></span></h3>
+    </div>
+    <script>
+        if (window.ethereum) {
+            document.querySelector('button').addEventListener('click', async () => {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+
+                    if (accounts.length === 0) {
+                        // Solicitar permissão ao usuário se nenhuma conta estiver conectada
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    }
+
+                    const updatedAccounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    let account = updatedAccounts[0];
+                    document.querySelector('span').innerHTML = account;
+                } catch (e) {
+                    console.error(e);
+                }
+            });
+        } else {
+            alert("Metamask não está instalada. Não é possível interagir com nosso website.");
+        }
+    </script>
+</body>
+</html>
