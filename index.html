@@ -18,6 +18,7 @@
             align-items: center;
             height: 100vh;
             color: #333;
+            padding: 20px; /* Adiciona espaçamento ao redor do conteúdo */
         }
         .container {
             text-align: center;
@@ -25,10 +26,13 @@
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
             max-width: 400px;
+            word-break: break-word; /* Quebra a palavra quando o texto excede o contêiner */
         }
         button {
-            width: 220px;
+            width: 100%;
+            max-width: 220px;
             height: 50px;
             background-color: #0071e3;
             border: none;
@@ -57,7 +61,7 @@
 <body>
     <div class="container">
         <button>Logar com Metamask</button>
-        <h3>Você está logado como: <span></span></h3>
+        <h3>Você está logado como: <span id="account"></span></h3>
     </div>
     <script>
         async function checkAccount() {
@@ -65,9 +69,9 @@
                 try {
                     const accounts = await window.ethereum.request({ method: 'eth_accounts' });
                     if (accounts.length > 0) {
-                        document.querySelector('span').textContent = accounts[0];
+                        document.getElementById('account').textContent = accounts[0];
                     } else {
-                        document.querySelector('span').textContent = 'Nenhuma conta conectada';
+                        document.getElementById('account').textContent = 'Nenhuma conta conectada';
                     }
                 } catch (e) {
                     console.error(e);
@@ -77,29 +81,29 @@
             }
         }
 
-        // Atualiza a conta após o login
         document.querySelector('button').addEventListener('click', async () => {
             try {
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
-                await checkAccount(); // Atualiza o endereço após o login
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                if (accounts.length > 0) {
+                    document.getElementById('account').textContent = accounts[0];
+                }
             } catch (e) {
                 console.error(e);
             }
         });
 
-        // Detecta mudanças na conta e atualiza automaticamente
         if (window.ethereum) {
             window.ethereum.on('accountsChanged', function (accounts) {
                 if (accounts.length > 0) {
-                    document.querySelector('span').textContent = accounts[0];
+                    document.getElementById('account').textContent = accounts[0];
                 } else {
-                    document.querySelector('span').textContent = 'Nenhuma conta conectada';
+                    document.getElementById('account').textContent = 'Nenhuma conta conectada';
                 }
             });
         }
 
-        // Verificar a conta ao carregar a página
         checkAccount();
     </script>
 </body>
 </html>
+
