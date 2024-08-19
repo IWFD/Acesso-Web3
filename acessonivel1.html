@@ -6,36 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso Nível 001</title>
     <link rel="stylesheet" href="./styles/style.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .modal h2 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        .modal a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0071e3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .modal a:hover {
+            background-color: #005bb5;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Acesso Nível 001</h1>
+        <p>Conteúdo exclusivo para usuários logados na Metamask.</p>
+    </div>
 
-<header class="cabecalho">
-    <img class="logo" src="/Assets/Logo.svg" alt="logo do uxbrabo">
-    <nav class="menu-nav">
-        <a class="home" href="index.html">Home</a>
-        <a class="sobre" href="about.html">Sobre mim</a>
-    </nav>
-</header>
-<main class="apresentacao">
-    <section class="apresentacao__conteudo">
-        <h1 class="apresentacao__conteudo__titulo">
-            Eleve seu negócio digital a outro nível <strong>com um Front-end de qualidade!</strong>
-        </h1>
-        <p class="apresentacao__conteudo_paragrafo">
-            Olá! Sou o Israel Wilson, desenvolvedor Front-end com especialidade em <span class="negrito-paragrafo">React, HTML e CSS.</span> Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar ?
-        </p>
-        <div class="apresentacao__links">
-            <h2 class="apresentacao__links__subtitulo">Acesse minhas redes:</h2>
-            <a class="apresentacao__links_link" href="https://github.com/"><img class="icone-svg" src="./Assets/GitHub.svg">GitHub</a>
-            <a class="apresentacao__links_link" href="https://www.linkedin.com/in/"><img class="icone-svg" src="./Assets/Linkedin.svg">Linkedin</a>
-            <a class="apresentacao__links_link" href="https://www.twitch.tv/"><img class="icone-svg" src="./Assets/twitch.svg">Twicth</a>
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Metamask não instalada</h2>
+            <p>Para acessar este site, você precisa ter a extensão Metamask instalada.</p>
+            <a href="https://metamask.io/download.html" target="_blank">Baixar Metamask</a>
         </div>
-    </section>
-     <img class="imagem" src="/Assets/image.png" alt="Imagem de Israel Wilson">
-</main>
-<footer>
-    <p class="rodape">Desenvolvido por Israel Wilson 💚<p>
-</footer>
+    </div>
 
+    <script>
+        async function checkMetamask() {
+            if (window.ethereum) {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+
+                    if (accounts.length === 0) {
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    }
+
+                    const updatedAccounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    if (updatedAccounts.length === 0) {
+                        window.location.href = 'index.html'; // Redireciona para a página inicial se não estiver logado
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
+            } else {
+                document.getElementById('modal').style.display = 'flex'; // Mostra o modal se Metamask não estiver instalada
+            }
+        }
+
+        window.onload = checkMetamask;
+    </script>
 </body>
 </html>
