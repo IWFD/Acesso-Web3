@@ -81,6 +81,9 @@
         let usuarios = [];
         let cadastros = [];
 
+        // Carregar dados do arquivo JSON ao iniciar a página
+        loadDataFromJSON();
+
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             const nomeUsuario = document.getElementById('nomeUsuario').value;
@@ -101,6 +104,7 @@
             const dataHoraCadastro = new Date();
             usuarios.push(nome);
             cadastros.push({ nome: nome, data: dataHoraCadastro.toLocaleDateString(), hora: dataHoraCadastro.toLocaleTimeString() });
+            saveDataToJSON();
             atualizarPiramides();
         }
 
@@ -149,6 +153,33 @@
                 auditItem.textContent = `Nome do Usuário: ${cadastro.nome} | Data Cadastrada: ${cadastro.data} | Hora Cadastrada: ${cadastro.hora}`;
                 auditContent.appendChild(auditItem);
             }
+        }
+
+        function saveDataToJSON() {
+            const data = {
+                usuarios: usuarios,
+                cadastros: cadastros
+            };
+
+            fetch('dadosCadastrais.json', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .catch(error => console.error('Erro ao salvar dados:', error));
+        }
+
+        function loadDataFromJSON() {
+            fetch('dadosCadastrais.json')
+            .then(response => response.json())
+            .then(data => {
+                usuarios = data.usuarios;
+                cadastros = data.cadastros;
+                atualizarPiramides();
+            })
+            .catch(error => console.error('Erro ao carregar dados:', error));
         }
     </script>
 </body>
