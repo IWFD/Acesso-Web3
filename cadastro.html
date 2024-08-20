@@ -32,6 +32,26 @@
             padding: 5px 10px;
             margin: 2px;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 500px;
+            width: 90%;
+        }
     </style>
 </head>
 <body>
@@ -40,12 +60,26 @@
         <input type="text" id="nomeUsuario" placeholder="Nome do usuário" required>
         <button type="submit">Cadastrar</button>
     </form>
+    <button id="auditarButton">Auditoria</button>
     <div id="piramides"></div>
+
+    <div id="auditModal" class="modal">
+        <div class="modal-content">
+            <h2>Auditoria de Cadastro</h2>
+            <div id="auditContent"></div>
+            <button id="closeModal">Fechar</button>
+        </div>
+    </div>
 
     <script>
         const form = document.getElementById('cadastroForm');
         const piramidesContainer = document.getElementById('piramides');
+        const auditarButton = document.getElementById('auditarButton');
+        const auditModal = document.getElementById('auditModal');
+        const closeModal = document.getElementById('closeModal');
+        const auditContent = document.getElementById('auditContent');
         let usuarios = [];
+        let cadastros = [];
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -54,8 +88,19 @@
             form.reset();
         });
 
+        auditarButton.addEventListener('click', function() {
+            auditModal.style.display = 'flex';
+            exibirAuditoria();
+        });
+
+        closeModal.addEventListener('click', function() {
+            auditModal.style.display = 'none';
+        });
+
         function cadastrarUsuario(nome) {
+            const dataHoraCadastro = new Date();
             usuarios.push(nome);
+            cadastros.push({ nome: nome, data: dataHoraCadastro.toLocaleDateString(), hora: dataHoraCadastro.toLocaleTimeString() });
             atualizarPiramides();
         }
 
@@ -93,6 +138,17 @@
             }
 
             return piramide;
+        }
+
+        function exibirAuditoria() {
+            auditContent.innerHTML = '';
+
+            for (let i = 0; i < cadastros.length; i++) {
+                const cadastro = cadastros[i];
+                const auditItem = document.createElement('div');
+                auditItem.textContent = `Nome do Usuário: ${cadastro.nome} | Data Cadastrada: ${cadastro.data} | Hora Cadastrada: ${cadastro.hora}`;
+                auditContent.appendChild(auditItem);
+            }
         }
     </script>
 </body>
