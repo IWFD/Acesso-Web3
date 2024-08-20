@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro de Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #cadastroForm {
+            margin-bottom: 20px;
+        }
+        .piramide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .nivel {
+            display: flex;
+            justify-content: center;
+        }
+        .usuario {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Cadastro de Usuários</h1>
+    <form id="cadastroForm">
+        <input type="text" id="nomeUsuario" placeholder="Nome do usuário" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <div id="piramides"></div>
+
+    <script>
+        const form = document.getElementById('cadastroForm');
+        const piramidesContainer = document.getElementById('piramides');
+        let usuarios = [];
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nomeUsuario = document.getElementById('nomeUsuario').value;
+            cadastrarUsuario(nomeUsuario);
+            form.reset();
+        });
+
+        function cadastrarUsuario(nome) {
+            usuarios.push(nome);
+            atualizarPiramides();
+        }
+
+        function atualizarPiramides() {
+            piramidesContainer.innerHTML = '';
+            const numPiramides = Math.ceil(usuarios.length / 5);
+
+            for (let i = 0; i < numPiramides; i++) {
+                const piramideUsuarios = usuarios.slice(i * 5, (i + 1) * 5);
+                const piramide = criarPiramide(piramideUsuarios);
+                piramidesContainer.appendChild(piramide);
+            }
+        }
+
+        function criarPiramide(usuariosPiramide) {
+            const piramide = document.createElement('div');
+            piramide.className = 'piramide';
+
+            const niveis = [1, 2, 2];
+            let usuarioIndex = 0;
+
+            for (let i = 0; i < niveis.length; i++) {
+                const nivel = document.createElement('div');
+                nivel.className = 'nivel';
+
+                for (let j = 0; j < niveis[i] && usuarioIndex < usuariosPiramide.length; j++) {
+                    const usuario = document.createElement('div');
+                    usuario.className = 'usuario';
+                    usuario.textContent = usuariosPiramide[usuarioIndex];
+                    nivel.appendChild(usuario);
+                    usuarioIndex++;
+                }
+
+                piramide.appendChild(nivel);
+            }
+
+            return piramide;
+        }
+    </script>
+</body>
+</html>
