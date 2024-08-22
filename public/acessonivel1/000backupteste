@@ -1,0 +1,190 @@
+{
+  "grupos": [
+    [
+      {
+        "nome": "Nina Canina",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:30:56",
+        "pago": false
+      },
+      {
+        "nome": "Tulipa SuperStar",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:31:11",
+        "pago": false
+      },
+      {
+        "nome": "Serena Pitty",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:31:49",
+        "pago": false
+      },
+      {
+        "nome": "Teddy Malucão",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:32:05",
+        "pago": false
+      },
+      {
+        "nome": "Galocura",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:32:20",
+        "pago": false
+      }
+    ],
+    [
+      {
+        "nome": "Yusuke Urameshi",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:33:11",
+        "pago": false
+      },
+      {
+        "nome": "Kazuma Kuwabara",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:33:24",
+        "pago": false
+      },
+      {
+        "nome": "Hiei",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:33:59",
+        "pago": false
+      },
+      {
+        "nome": "Kurama Yoko",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:34:17",
+        "pago": false
+      },
+      {
+        "nome": "Genkai",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:34:48",
+        "pago": false
+      }
+    ],
+    [
+      {
+        "nome": "Harry Potter",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:35:21",
+        "pago": false
+      },
+      {
+        "nome": "Rony Weasley",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:35:33",
+        "pago": false
+      },
+      {
+        "nome": "Hermione Granger",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:35:42",
+        "pago": false
+      },
+      {
+        "nome": "Severus Snape",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:35:56",
+        "pago": false
+      },
+      {
+        "nome": "Gina Weasley",
+        "telefone": "67981023882",
+        "cpf": "233.332.233-32",
+        "dataHora": "21/08/2024, 13:36:12",
+        "pago": false
+      }
+    ],
+    [
+      {
+        "nome": "Monkey D. Luffy",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:36:46",
+        "pago": false
+      },
+      {
+        "nome": "Roronoa Zoro",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:36:57",
+        "pago": false
+      },
+      {
+        "nome": "Nico Robin",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:37:10",
+        "pago": false
+      },
+      {
+        "nome": "Sanji",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:37:22",
+        "pago": false
+      },
+      {
+        "nome": "Nami",
+        "telefone": "67981023882",
+        "cpf": "065.510.091-15",
+        "dataHora": "21/08/2024, 13:37:54",
+        "pago": false
+      }
+    ],
+    [
+      {
+        "nome": "Tanjirō Kamado",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:47:23",
+        "pago": false
+      },
+      {
+        "nome": "Nezuko Kamado",
+        "telefone": "67981023882",
+        "cpf": "233.332.233-32",
+        "dataHora": "21/08/2024, 13:47:51",
+        "pago": false
+      },
+      {
+        "nome": "Inosuke Hashibira",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:48:11",
+        "pago": false
+      },
+      {
+        "nome": "Zenitsu Agatsuma",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:48:27",
+        "pago": false
+      },
+      {
+        "nome": "Muichiro Tokito",
+        "telefone": "67981023882",
+        "cpf": "001.076.011-33",
+        "dataHora": "21/08/2024, 13:48:49",
+        "pago": false
+      }
+    ]
+  ],
+  "usuariosRemovidos": []
+}
