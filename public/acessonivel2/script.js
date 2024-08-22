@@ -23,7 +23,8 @@ const modal = document.getElementById("myModal");
 const btn = document.getElementById("showModal");
 const span = document.getElementsByClassName("close")[0];
 
-btn.addEventListener('click', function() {
+btn.addEventListener('click', function(event) {
+    event.preventDefault(); // Evita comportamento padrão
     fetch('/grupos')
         .then(response => response.json())
         .then(grupos => {
@@ -52,20 +53,23 @@ btn.addEventListener('click', function() {
         });
 });
 
-span.addEventListener('click', function() {
+span.addEventListener('click', function(event) {
+    event.preventDefault(); // Evita comportamento padrão
     modal.style.display = "none";
     document.querySelector('.modal-content').classList.remove('show');
 });
 
 window.addEventListener('click', function(event) {
     if (event.target == modal) {
+        event.preventDefault(); // Evita comportamento padrão
         modal.style.display = "none";
         document.querySelector('.modal-content').classList.remove('show');
     }
 });
 
 // Função para exibir o "Grupo Nióbio"
-document.getElementById('showGrupoNiobio').addEventListener('click', function() {
+document.getElementById('showGrupoNiobio').addEventListener('click', function(event) {
+    event.preventDefault(); // Evita comportamento padrão
     fetch('/grupo-niobio')
         .then(response => response.json())
         .then(usuarios => {
